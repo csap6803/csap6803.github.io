@@ -9,10 +9,9 @@
 	body { font-family: sansserif;
 	}
 
-	.wichtig { 
-				color: #cc6666;		
-				font-weight: bold;
-				background-color: lime; width: 40px
+	.wichtig { color: #cc6666;		
+			  font-weight: bold;
+		      background-color: lime; width: 300px
 			
 	}
 	
