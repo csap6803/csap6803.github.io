@@ -3,18 +3,82 @@
 	
 	
 	h1 {font-family: Arial;
-		color: yellow; 
-		background-color: blue;
+		color: white; 
+		background-color: gray;
+		border-radius: 10px;
+		width: 400px
 	}
 	body { font-family: sansserif;
+	      background-color: #BDBDBD;
 	}
 
 	.wichtig { color: #cc6666;		
 			  font-weight: bold;
-		      background-color: lime; width: 300px
+		      background-color: lime; width: 300px; border: 2px solid blue;
+			  
+			}
 			
+	.Seite {
+		background-color:gray;
+		border: 2px solid white;
+		width: 675px;
+		margin:auto;
+		
+	}
+	.Seite:hover{background-color:white;
+				color: black;
 	}
 	
+	
+	
+	
+	
+	.Seite1 {background-color: gray; 
+	        border: 2px solid white;
+			width: 675px;
+			margin: auto;
+			  }
+	.Seite1>p>strong:hover{background-color: white;
+						   color: black;
+									
+			  }
+	
+	
+	/*wie gehen die einzelnen Balken????*/
+	
+	.tabelle {border: 2px solid white;
+			 text-align: center;
+			 border-collapse: separate;
+			 border-radius: 6px;
+	}
+	
+	
 	#abb1 {
-		background-color: blue;
-		}
+		border: 3px dashed black;
+		width:  500px;
+		padding: 20px 10px 10px 30px;
+	}
+	
+	#abb2 {
+		border: 3px dashed black;
+		width: 500px;
+		padding: 20px 10px 10px 30px;
+		display: inline-block;
+	}
+	
+	#abb3 { display: inline-block;
+			border: 3px dashed black;
+			width: 500px;
+			padding: 20px 10px 10px 10px;}
+	
+	#bild {width:490px}
+	
+	#bild1{width:490px
+			}
+	
+	#bild3 {width:490px;
+			height: 370px;
+		   }
+		   
+		   
+		
