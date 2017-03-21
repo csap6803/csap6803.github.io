@@ -10,9 +10,9 @@
 	}
 
 	.wichtig { 
-				color: #cc6666; width: 40px;		
+				color: #cc6666;		
 				font-weight: bold;
-				background-color: lime;
+				background-color: lime; width: 40px
 			
 	}
 	
