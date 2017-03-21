@@ -1,0 +1,21 @@
+
+	/* mein erstes Stylesheet*/
+	
+	
+	h1 {font-family: Arial;
+		color: yellow; 
+		background-color: blue;
+	}
+	body { font-family: sansserif;
+	}
+
+	.wichtig { 
+				color: red;		
+				font-weight: bold;
+				background-color: lime;
+			
+	}
+	
+	#abb1 {
+		background-color: lime;
+		}
