@@ -32,13 +32,13 @@
         }
 
     
-/*    #wienMap {
+   #wienMap {
             width: 900px;
             height: 600px;
             border: 1px solid black;
             margin: auto;
     }
-*/	
+	
     </style>
 </head>
 
@@ -221,8 +221,8 @@
 
         // Ausschnitt setzen
         // TODO: Ausschnitt auf Stationen des Stadtpaziergangs setzen
-		var ausschnitt = (punkteSpaziergang.getBounds());
-		map.fitBounds(ausschnitt);
+		//var ausschnitt = (punkteSpaziergang.getBounds());
+		//map.fitBounds(ausschnitt);
     
 		//map.locate({setView: true, maxZoom: 16});
 		//function onLocationfound(e) {
@@ -230,8 +230,8 @@
 		   //L.marker(e.latlng).addTo(map)
        // .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
-    L.circle(e.latlng, radius).addTo(map);
-}
+   // L.circle(e.latlng, radius).addTo(map);
+//}
 
 }map.on('locationfound', onLocationFound);	
 L.geoJSON(window.my_geojson).addTo(map);
