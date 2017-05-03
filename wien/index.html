@@ -29,19 +29,19 @@
         h1 {
             text-align: center;
         }
-/*
+
         #wienMap {
             width: 900px;
             height: 600px;
             border: 1px solid black;
             margin: auto;
     }
-*/	
+	
     </style>
 </head>
 
 <body>
-  <!--<h1>Stadtspaziergang Wien</h1> -->
+  <h1>Stadtspaziergang Wien</h1> 
 
     <div id="wienMap"></div>
     <h3>Quelle Geodaten</h3>
@@ -219,10 +219,19 @@
 
         // Ausschnitt setzen
         // TODO: Ausschnitt auf Stationen des Stadtpaziergangs setzen
-		//var ausschnitt = (punkteSpaziergang.getBounds());
-		//map.fitBounds(ausschnitt);
+		var ausschnitt = (punkteSpaziergang.getBounds());
+		map.fitBounds(ausschnitt);
     
-		map.locate({setView: true, maxZoom: 16});
+		//map.locate({setView: true, maxZoom: 16});
+		//function onLocationfound(e) {
+			//var radius = e.accuracy /2;
+		   //L.marker(e.latlng).addTo(map)
+       // .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+    //L.circle(e.latlng, radius).addTo(map);
+}
+
+map.on('locationfound', onLocationFound);	
 	</script>
 
 </body>
