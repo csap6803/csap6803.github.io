@@ -1,4 +1,24 @@
 window.my_geojson = {
-	"type": "Point",
-	"coordinates": [16.316, 48.227]
-	};
+	"type": "FeatureCollection",
+	"features"😞
+	{
+		"type": "Feature",
+		"geometry": {
+			"type": "Point",
+			"coordinates": [16.382524, 48.221260],
+		}	
+		
+	},
+		{
+		"type": "Feature",
+		"geometry": {
+			"type": "Point",
+			"coordinates": [16.395524, 48.221260],
+		}	
+		
+	}
+	]
+	
+	
+	
+};
