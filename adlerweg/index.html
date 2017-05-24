@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>basemap.at mit leaflet-hash Plugin</title>
+    <title>Adlerweg Etappe 12</title>
 
     <link rel="stylesheet" href="js/leaflet/leaflet.css" />
 	<link rel="stylesheet" href="js/leaflet-elevation/leaflet.elevation-0.0.4.css" />
@@ -35,7 +35,8 @@
 <body>
 	<h3> Adlerweg Etappe 12: Hallerangerhaus –  Nordkette Innsbruck </h3>
 	<p> Diese Etappe führt vom Hallangerhaus zum Hafelekar auf der Innsbrucker Nordkette. Der Weg dorthin führt am „Zugspitzblick“ vorbei, wo man bei schönem Wetter einen Blick auf Deutschlands höchsten Berg erhaschen kann. Am Hafelekar wartet dann noch der einzigartige Blick auf die Landeshauptstadt. Insidertipp: Die Bar John Montagu in der Höttinger Gasse eignet sich hervorragend für einen kleinen Snack nach dieser anstrengenden Etappe.  </p>
-
+	<a href="http://www.tirol.at/reisefuehrer/sport/wandern/adlerweg">Adlerweg und seine Etappen</a>
+	</p>
     <div id="map"></div>
 
     <script>
@@ -114,7 +115,101 @@
 		for (var i=0; i<huts.length; i++) {
 			hutsLayer.addLayer(huts[i]);
 			}
-			
+
+		var el = L.control.elevation({
+  	position: "topright",
+	theme: "steelblue-theme", //default: lime-theme
+	width: 600,
+	height: 125,
+	margins: {
+		top: 10,
+		right: 20,
+		bottom: 30,
+		left: 50
+	},
+	useHeightIndicator: true, //if false a marker is drawn at map position
+	interpolation: "linear", //see https://github.com/mbostock/d3/wiki/SVG-Shapes#wiki-area_interpolate
+	hoverNumber: {
+		decimalsX: 3, //decimals on distance (always in km)
+		decimalsY: 0, //deciamls on hehttps://www.npmjs.com/package/leaflet.coordinatesight (always in m)
+		formatter: undefined //custom formatter function may be injected
+	},
+	xTicks: undefined, //number of ticks in x axis, calculated by default according to width
+	yTicks: undefined, //number of ticks on y axis, calculated by default according to height
+	collapsed: false,  //collapsed mode, show chart on click or mouseover
+	imperial: false    //display imperial units instead of metric
+	});
+
+	//Höhenprofil
+	
+		var profileControl = L.control.elevation({
+		    position : 'bottomright',
+		    theme : 'steelblue-theme'
+	    });
+	    profileControl.addTo(map);
+	
+	    gpxTrack = omnivore.gpx('Data/AdlerwegEtappe12.gpx').addTo(map);
+		
+		// nach erfolgreichem Laden Popup hinzufügen, Ausschnitt setzen und Höhenprofil erzeugen
+	    gpxTrack.on('ready', function () {
+	   
+
+	   // Popup hinzufügen
+	   var markup = '<h3>Adlerweg Etappe 12: Hallerangerhaus –  Nordkette Innsbruck</h3>';
+	               markup += '<li>Ausgangspunkt: Hallangerhaus</li>';
+	               markup += '<li>Endpunkt: Innsbruck</li>';
+	               markup += '<li>Höhenmeter bergauf: 1150</li>';
+	               markup += '<li>Höhenmeter bergab: 970</li>';
+	               markup += '<li>Höchster Punkt: 2280</li>';
+	               markup += '<li>Schwierigkeitsgrad: schwierig</li>';
+	               markup += '<li>Streckenlänge (in km): 13</li>';
+	               markup += '<li>Gehzeit (in Stunden): 5,5</li>';
+	               markup += '<li>Einkehrmöglichkeiten: Hallerangerhaus, Pfeishütte, Bergstation Hafelekar</li>';
+	               markup += '<li><a href="http://www.tirol.at/reisefuehrer/sport/wandern/wandertouren/a-adlerweg-etappe-12-hallerangerhaus-nordkette-innsbruck">Weitere Infos</a></li>';
+	               gpxTrack.bindPopup(markup, { maxWidth : 480 });
+				
+				 // Ausschnitt setzen
+	               map.fitBounds(gpxTrack.getBounds());
+
+	               // Höhenprofil erzeugen
+	               gpxTrack.eachLayer(function(layer) {
+	                   profileControl.addData(layer.feature);
+	               });
+	           });
+		
+		var start = L.marker([47.35476,11.47711],{
+		title: 'Start',
+		icon: L.icon({
+		iconUrl: 'icons/hiking.png',
+		iconAnchor: [14,34]
+		})
+		}).addTo(map);	
+		
+		var ziel = L.marker([47.27093, 11.39542],{
+		title: 'Ziel',
+		icon: L.icon({
+		iconUrl: 'icons/finish.png',
+		iconAnchor: [14,34]
+		})
+		}).addTo(map);	
+		
+		var adlerblickSeegrube = L.marker([47.3062, 11.3799],{
+		title: 'Seegrube Adlerblick',
+		icon: L.icon({
+		iconUrl: 'icons/panoramicview.png',
+		iconAnchor: [14,34]
+		})
+		}).addTo(map);	
+		
+		var adlerblickSeegrube = L.marker([47.31185, 11.38376],{
+		title: 'Hafelekar Adlerblick',
+		icon: L.icon({
+		iconUrl: 'icons/panoramicview.png',
+		iconAnchor: [14,34]
+		})
+		}).addTo(map);	
+		
+		
 		
 		map.on("zoomend", function() {
 		if (map.getZoom() >= 15) {
@@ -134,6 +229,7 @@
 
     </script>
 
+	<a href="https://github.com/csap6803/csap6803.github.io">Designer</a>
 </body>
 
 </html>
