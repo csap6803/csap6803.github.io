@@ -79,7 +79,7 @@ body {
 
 .arrow {
     display: block;
-    margin: 5em auto 10em auto;
+    margin: 25em auto 25em auto;
     height:5%;
     width:5%;
     filter: grayscale(100%);
@@ -89,7 +89,7 @@ body {
 .arrow:hover {
     opacity:0.5;
     display: block;
-    margin: 5em auto 10em auto;
+    margin: 25em auto 25em auto;
     height:5%;
     width:5%;
     filter: grayscale(100%);
