@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Bike Trail Tirol</title>
+
+    <link rel="stylesheet" href="js/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="js/leaflet-elevation/leaflet.elevation-0.0.4.css" />
+    <script src="js/leaflet/leaflet.js"></script>
+    <script src="js/leaflet-hash/leaflet-hash.js"></script>
+    <script src="js/leaflet-elevation/leaflet.elevation-0.0.4.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="Utf-8"></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+	<script src="info.js"></script>
+
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        html,
+        body,
+        #map {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #map {
+            height: 600px;
+            width: 1024px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3> Bike Trail Tirol </h3>
+    
+	<h2 id="etappentitel"></h2>
+	<h4>Tourenbeschreibung: </h4>
+	<div id="kurzinfo"> </div>
+	
+    <a href="http://www.tirol.at/reisefuehrer/sport/mountainbiken/bike-trail-tirol">Bike Trail Tirol mit seinen Etappen</a>
+    </p>
+    <div id="map"></div>
+	<select id= "etappen">
+	
+		<option value="trail_etappe_1.gpx">Bike Trail Tirol Etappe 1 </option>
+		<option value="trail_etappe_2.gpx">Bike Trail Tirol Etappe 2 </option>
+		<option value="trail_etappe_3.gpx">Bike Trail Tirol Etappe 3 </option>
+		<option value="trail_etappe_5.gpx">Bike Trail Tirol Etappe 4 </option>
+		<option value="trail_etappe_6.gpx">Bike Trail Tirol Etappe 5 </option>
+		<option value="trail_etappe_7.gpx">Bike Trail Tirol Etappe 6 </option>
+	
+
+	</select>
+	
+	<h4> Streckendetails: </h4>
+	
+	<div id="bergauf" ></div>
+	<div id="bergab" ></div>
+	<div id="dauer" ></div>
+	<div id="laenge" ></div>
+	<div id="level" ></div>
+
+
+    <script>
+        // WMTS-Layer basemap.at - Quelle: http://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml
+        var layers = {
+            geolandbasemap: L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains: ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution: 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmapgrau: L.tileLayer("https://{s}.wien.gv.at/basemap/bmapgrau/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains: ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution: 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmapoverlay: L.tileLayer("https://{s}.wien.gv.at/basemap/bmapoverlay/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains: ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution: 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmaphidpi: L.tileLayer("https://{s}.wien.gv.at/basemap/bmaphidpi/normal/google3857/{z}/{y}/{x}.jpeg", {
+                subdomains: ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution: 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmaporthofoto30cm: L.tileLayer("https://{s}.wien.gv.at/basemap/bmaporthofoto30cm/normal/google3857/{z}/{y}/{x}.jpeg", {
+                subdomains: ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution: 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            osm: L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                subdomains: ['a', 'b', 'c'],
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            })
+        };
+
+        // Map definieren
+        var map = L.map('map', {
+            layers: [layers.geolandbasemap],
+            center: [47.4580, 12.2146], 
+            zoom: 12
+			});
+
+        // Maßstab hinzufügen
+        L.control.scale({
+            maxWidth: 200,
+            metric: true,
+            imperial: false
+        }).addTo(map);
+
+        // WMTS-Layer Auswahl hinzufügen
+        var layerControl = L.control.layers({
+            "basemap.at - STANDARD": layers.geolandbasemap,
+            "basemap.at - GRAU": layers.bmapgrau,
+            "basemap.at - OVERLAY": layers.bmapoverlay,
+            "basemap.at - HIGH-DPI": layers.bmaphidpi,
+            "basemap.at - ORTHOFOTO": layers.bmaporthofoto30cm,
+            "OpenStreetMap": layers.osm,
+        }).addTo(map);
+
+        // leaflet-hash aktivieren
+        var hash = new L.Hash(map);
+
+        omnivore.gpx('data/trail_etappe_1.gpx').addTo(map).addTo(map);
+
+        var el = L.control.elevation();
+      
+
+        //L.geoJSON(window.etappe12, {
+        //onEachFeature: el.addData.bind(el)
+        //}).addTo(map);
+
+        var huts = [
+            L.marker([47.35477, 11.47718], {
+                title: "Hallerangerhaus",
+                icon: L.icon({
+                    iconUrl: 'icons/hut.png'
+                })
+            }),
+            L.marker([47.33002, 11.42559], {
+                title: "Pfeishütte",
+                icon: L.icon({
+                    iconUrl: 'icons/hut.png'
+                })
+            }),
+            L.marker([47.31202, 11.38101], {
+                title: "Bergstation Hafelekar",
+                icon: L.icon({
+                    iconUrl: 'icons/hut.png'
+                })
+            }),
+
+        ];
+
+        var hutsLayer = L.featureGroup();
+        for (var i = 0; i < huts.length; i++) {
+            hutsLayer.addLayer(huts[i]);
+        }
+
+        var el = L.control.elevation({
+            position: "topright",
+            theme: "steelblue-theme", //default: lime-theme
+            width: 600,
+            height: 125,
+            margins: {
+                top: 10,
+                right: 20,
+                bottom: 30,
+                left: 50
+            },
+            useHeightIndicator: true, //if false a marker is drawn at map position
+            interpolation: "linear", //see https://github.com/mbostock/d3/wiki/SVG-Shapes#wiki-area_interpolate
+            hoverNumber: {
+                decimalsX: 3, //decimals on distance (always in km)
+                decimalsY: 0, //deciamls on hehttps://www.npmjs.com/package/leaflet.coordinatesight (always in m)
+                formatter: undefined //custom formatter function may be injected
+            },
+            xTicks: undefined, //number of ticks in x axis, calculated by default according to width
+            yTicks: undefined, //number of ticks on y axis, calculated by default according to height
+            collapsed: false, //collapsed mode, show chart on click or mouseover
+            imperial: false //display imperial units instead of metric
+        });
+
+        //Höhenprofil
+
+        var profileControl = L.control.elevation({
+            position: 'bottomright',
+            theme: 'steelblue-theme'
+        });
+        profileControl.addTo(map);
+
+function loadTrack(track) {       
+	   gpxTrack = omnivore.gpx('data/'+track).addTo(map);
+	   
+	  document.getElementById("etappentitel").innerHTML = window.ETAPPEN[track].etappentitel;
+	  document.getElementById("kurzinfo").innerHTML = window.ETAPPEN[track].kurzinfo;
+	  document.getElementById("bergauf").innerHTML = window.ETAPPEN[track].bergauf;
+	  document.getElementById("bergab").innerHTML = window.ETAPPEN[track].bergab;
+	  document.getElementById("dauer").innerHTML = window.ETAPPEN[track].dauer;
+	  document.getElementById("laenge").innerHTML = window.ETAPPEN[track].laenge;
+	  document.getElementById("level").innerHTML = window.ETAPPEN[track].level;
+
+        // nach erfolgreichem Laden Popup hinzufügen, Ausschnitt setzen und Höhenprofil erzeugen
+        gpxTrack.on('ready', function() {
+            // Popup hinzufügen
+            var markup = '<h3>Adlerweg Etappe 12: Hallerangerhaus –  Nordkette Innsbruck</h3>';
+            markup += '<li>Ausgangspunkt: Hallerangerhaus</li>';
+            markup += '<li>Endpunkt: Innsbruck</li>';
+            markup += '<li>Höhenmeter bergauf: 1150</li>';
+            markup += '<li>Höhenmeter bergab: 970</li>';
+            markup += '<li>Höchster Punkt: 2280</li>';
+            markup += '<li>Schwierigkeitsgrad: schwierig</li>';
+            markup += '<li>Streckenlänge (in km): 13</li>';
+            markup += '<li>Gehzeit (in Stunden): 5,5</li>';
+            markup += '<li>Einkehrmöglichkeiten: Hallerangerhaus, Pfeishütte, Bergstation Hafelekar</li>';
+            markup += '<li><a href="http://www.tirol.at/reisefuehrer/sport/wandern/wandertouren/a-adlerweg-etappe-12-hallerangerhaus-nordkette-innsbruck">Weitere Infos</a></li>';
+            gpxTrack.bindPopup(markup, {
+                maxWidth: 480
+            });
+
+            // Ausschnitt setzen
+            map.fitBounds(gpxTrack.getBounds());
+
+            // Höhenprofil erzeugen
+			profileControl.clear();
+            gpxTrack.eachLayer(function(layer) {
+                profileControl.addData(layer.feature);
+                //var pts =
+                //console.log(layer.feature.geometry.coordinates)
+
+                var pts = layer.feature.geometry.coordinates;
+
+                for (var i = 1; i < pts.length; i += 1) {
+                    //console.log(pts[i]);   //aktuellerPunkt
+                    //console.log(pts[i-1]); //vorhergehenderPunkt
+
+                    //entfernung
+                    var dist = map.distance(
+                        [pts[i][1], pts[i][0]], [pts[i - 1][1], pts[i - 1][0]]
+                    );
+                    //console.log(dist);
+
+                    var delta = pts[i][2] - pts[i - 1][2];
+                    //console.log(delta, "HM auf", dist, "Strecke");
+
+                    var rad = Math.atan(delta / dist);
+                    var deg = (rad * (180 / Math.PI)).toFixed(1);
+                    //console.log(deg);
+
+                    //color 
+                    var farbe;
+
+                    switch (true) { // checks if condition is true, not for certain values of a variable
+                        case (deg >= 10):
+                            farbe = "#bd0026";
+                            break;
+                        case (deg >= 7.5):
+                            farbe = "#f03b20";
+                            break;
+                        case (deg >= 5):
+                            farbe = "#fd8d3c";
+                            break;
+                        case (deg >= 2.5):
+                            farbe = "#feb24c";
+                            break;
+                        case (deg >= 1):
+                            farbe = "#fed976";
+                            break;
+                        case (deg >= -1):
+                            farbe = "yellow";
+                            break;
+                        case (deg >= -2.5):
+                            farbe = "#d9f0a3";
+                            break;
+                        case (deg >= -5):
+                            farbe = "#addd8e";
+                            break;
+                        case (deg >= -7.5):
+                            farbe = "#78c679";
+                            break;
+                        case (deg >= -10):
+                            farbe = "#31a354";
+                            break;
+                        case (deg < -10):
+                            farbe = "#006837";
+                            break;
+                    };
+			
+                    var pointA = new L.LatLng(pts[i][1], pts[i][0]);
+                    var pointB = new L.LatLng(pts[i - 1][1], pts[i - 1][0]);
+                    var pointList = [pointA, pointB];
+
+                    var firstpolyline = new L.Polyline(pointList, {
+                        color: farbe,
+                        weight: 6,
+                        opacity: 3,
+                        smoothFactor: 1
+
+                    });
+                    firstpolyline.addTo(map);
+					
+                }
+            });
+        });
+		}
+        var start = L.marker([47.35476, 11.47711], {
+            title: 'Start',
+            icon: L.icon({
+                iconUrl: 'icons/hiking.png',
+                iconAnchor: [14, 34]
+            })
+        }).addTo(map);
+
+        var ziel = L.marker([47.27093, 11.39542], {
+            title: 'Ziel',
+            icon: L.icon({
+                iconUrl: 'icons/finish.png',
+                iconAnchor: [14, 34]
+            })
+        }).addTo(map);
+
+        var adlerblickSeegrube = L.marker([47.3062, 11.3799], {
+            title: 'Seegrube Adlerblick',
+            icon: L.icon({
+                iconUrl: 'icons/panoramicview.png',
+                iconAnchor: [14, 34]
+            })
+        }).addTo(map);
+
+        var adlerblickSeegrube = L.marker([47.31185, 11.38376], {
+            title: 'Hafelekar Adlerblick',
+            icon: L.icon({
+                iconUrl: 'icons/panoramicview.png',
+                iconAnchor: [14, 34]
+            })
+        }).addTo(map);
+
+
+
+        map.on("zoomend", function() {
+            if (map.getZoom() >= 15) {
+                map.addLayer(hutsLayer);
+            } else {
+                map.removeLayer(hutsLayer);
+            }
+
+        });
+
+        hutsLayer.addTo(map);
+		
+		var etappenSelektor = document.getElementById("etappen");
+		console.log("Selektor: ", etappenSelektor);
+		etappenSelektor.onchange = function(evt) {
+		console.log("GPX track laden" , etappenSelektor[etappenSelektor.selectedIndex].value);
+		loadTrack(etappenSelektor[etappenSelektor.selectedIndex].value);
+		}
+		loadTrack("trail_etappe_1.gpx")
+		
+    </script>
+
+    <a href="https://github.com/csap6803/csap6803.github.io">Designer</a>
+</body>
+
+</html>
