@@ -97,7 +97,7 @@ window.onload = function() {
 				current = current % backgrounds.length;
 				back.css('background-image', backgrounds[current]);
 			}
-			setInterval(nextBackground, 50000);
+			setInterval(nextBackground, 25000);
 
 			back.css('background-image', backgrounds[0]);
 				 
