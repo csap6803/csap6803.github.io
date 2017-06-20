@@ -82,27 +82,24 @@ window.onload = function() {
                 alert(txt);
             };*/
 			
-		$(document).ready(function(){
-		var back = $('body');
+			var back = $('body');
 
-		var backgrounds = new Array(
-		'url(../images/background.jpg)',
-		  'url(../images/background2.jpg)',
-		  'url(../images/background3.jpg)'
-		);
+			var backgrounds = new Array(
+				'url(../images/background.jpg)'
+			  , 'url(../images/background.jpg)'
+			  , 'url(../images/background.jpg)'
+			);
 
-		var current = 0;
+			var current = 0;
 
-		function nextBackground() {
-			current++;
-			current = current % backgrounds.length;
-			back.css('background-image', backgrounds[current]);
-		}
-		setInterval(nextBackground, 10000);
+			function nextBackground() {
+				current++;
+				current = current % backgrounds.length;
+				back.css('background-image', backgrounds[current]);
+			}
+			setInterval(nextBackground, 1000);
 
-		
-		back.css('background-image', backgrounds[0]);
-		});
+			back.css('background-image', backgrounds[0]);
 				 
 
 }
