@@ -61,31 +61,15 @@ window.onload = function() {
         var el = L.control.elevation();
       
 
-        var huts = [
-            L.marker([47.35477, 11.47718], {
-                title: "Hallerangerhaus",
-                icon: L.icon({
-                    iconUrl: 'icons/hut.png'
-                })
-            }),
-            L.marker([47.33002, 11.42559], {
-                title: "Pfeishütte",
-                icon: L.icon({
-                    iconUrl: 'icons/hut.png'
-                })
-            }),
-            L.marker([47.31202, 11.38101], {
-                title: "Bergstation Hafelekar",
-                icon: L.icon({
-                    iconUrl: 'icons/hut.png'
-                })
-            }),
+        var einkehr = [
+
+
 
         ];
 
-        var hutsLayer = L.featureGroup();
-        for (var i = 0; i < huts.length; i++) {
-            hutsLayer.addLayer(huts[i]);
+        var einkehrLayer = L.featureGroup();
+        for (var i = 0; i < einkehr.length; i++) {
+            einkehrLayer.addLayer(einkehr[i]);
         }
 
         var el = L.control.elevation({
@@ -240,7 +224,7 @@ function loadTrack(track) {
 
 
         map.on("zoomend", function() {
-            if (map.getZoom() >= 13) {
+            if (map.getZoom() >= 11) {
                 map.addLayer(einkehrLayer);
             } else {
                 map.removeLayer(einkehrLayer);
@@ -253,14 +237,14 @@ function loadTrack(track) {
 
         map.on("zoomend", function() {
             if (map.getZoom() >= 15) {
-                map.addLayer(hutsLayer);
+                map.addLayer(einkehrLayer);
             } else {
-                map.removeLayer(hutsLayer);
+                map.removeLayer(einkehrLayer);
             }
 
         });
 
-        hutsLayer.addTo(map);
+        einkehrLayer.addTo(map);
 		
 		var etappenSelektor = document.getElementById("etappen");
 		console.log("Selektor: ", etappenSelektor);

@@ -21,11 +21,12 @@
 			line-height: 1.7em;
 			 
 			vertical-align: middle;
-			text-align:center;
-			
-			
+			text-align:center;	
 		}
 		
+		a {
+		text-decoration: none; color: black; font: 1em, Helvetica, sans-serif; text-align: left-side;
+		}
 
         #map {
             height: 600px;
@@ -64,14 +65,15 @@
 			color: black;
 			font: 1em; 
 			background: rgba(162,181,205, 0.7);
-			width: 220px;
-			display: inline-block;
-			float: left;
+	position: absolute;
+    margin: 0 0 0 -150px;
+    left: 50%;
+
 		}
 		
 		#wetter{
 			display: inline-block;
-			
+			float: center;
 		}
 		
 	    .knopf {
@@ -84,19 +86,10 @@
 		}
 		
 		h3 { color: white;
-			font: 1.5em 
+			font: 1.5em; 
 			
 		
 		h4 { color: white;
-			font: 1.5em 
-			
-			
-			
-	
-		
-			
-		
-		
-		a {
-		text-decoration: none; color: black; font: 1em, Helvetica, sans-serif; text-align: right;
-		}
+			font: 1.5em; 
+			}
+

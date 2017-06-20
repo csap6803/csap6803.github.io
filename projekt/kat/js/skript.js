@@ -223,27 +223,10 @@ function loadTrack(track) {
 
         });
 		
-// Übernachtungs Marker
-		var hotel = [
-		L.marker([47.455853, 12.149530],{title: "Hotel Tirolerhof", icon : L.icon({ iconUrl:'icons/hotel.png'})})
-		];
-		var hotelLayer = L.featureGroup();
-		for (var i=0; i<hotel.length; i++) {
-		hotelLayer.addLayer(hotel[i]);
-		};
-		hotelLayer.addTo(map);
-		
 
 
 
-        map.on("zoomend", function() {
-            if (map.getZoom() >= 13) {
-                map.addLayer(hotelLayer);
-            } else {
-                map.removeLayer(hotelLayer);
-            }
-
-        });
+     
 
 		
 		var etappenSelektor = document.getElementById("etappen");
