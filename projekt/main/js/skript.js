@@ -82,8 +82,8 @@ window.onload = function() {
                 alert(txt);
             };*/
 			
-		$(document).ready(function(){
-		var back = $('body');
+		(document).ready(function(){
+		var back = ('body');
 
 		var backgrounds = new Array(
 		'url(../images/background.jpg)',
