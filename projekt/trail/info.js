@@ -10,6 +10,7 @@ window.ETAPPEN= {
       "dauer": "Dauer 4h 30min",
       "laenge": "Etappenlänge: 44 km",
       "level": "Schwierigkeit: leicht"
+	
    },
    "trail_etappe_2.gpx": {
       "etappentitel": "Etappe 02: Weißenbach - Tannheim",

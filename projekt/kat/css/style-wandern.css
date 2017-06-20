@@ -1,6 +1,5 @@
    body {
             
-				padding: 15px;
 				background-image: url(../images/berg.jpg);
 				background-repeat:no-repeat;
 				background-size: cover;
@@ -10,12 +9,94 @@
 
         html,
         body,
-        #map {
-            height: 100vh;
-            width: 100vw;
-        }
+		
+		*{font-family:Helvetica, sans-serif; 
+		  
+		}
+		
+		#header {
+			font: 2em 'Lobster Two';
+			background-color:white;
+			width: 100%;
+			line-height: 1.7em;
+			 
+			vertical-align: middle;
+			text-align:center;
+			
+			
+		}
+		
 
         #map {
             height: 600px;
             width: 1024px;
+			margin: 0 auto 0 auto;
         }
+		
+		#etappentitel {
+			color: black;
+			font: 2.5em 'Lobster Two';
+			border: 1px solid white;
+			height: 80px;
+			padding-top: 50px;
+			padding-bottom: 50px;
+			text-align: center;
+		}
+   
+		#etappen {
+			float: left;
+			margin-left: 9%;
+
+		}	
+			
+		
+		
+		#kurzinfo {
+			color: black;
+			font: 1em; 
+			background: rgba(162,181,205, 0.7);
+			text-align: justify; 
+			padding: 15px;
+			margin: 20px;
+			}
+		
+		.details {
+			color: black;
+			font: 1em; 
+			background: rgba(162,181,205, 0.7);
+			width: 220px;
+			display: inline-block;
+			float: left;
+		}
+		
+		#wetter{
+			display: inline-block;
+			
+		}
+		
+	    .knopf {
+			border: 1px solid black;
+			border-radius:12%;
+			background-color: lightgrey;
+			display: inline-block;
+			padding:0.5em;
+			color: black;
+		}
+		
+		h3 { color: white;
+			font: 1.5em 
+			
+		
+		h4 { color: white;
+			font: 1.5em 
+			
+			
+			
+	
+		
+			
+		
+		
+		a {
+		text-decoration: none; color: black; font: 1em, Helvetica, sans-serif; text-align: right;
+		}

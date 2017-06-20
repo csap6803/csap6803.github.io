@@ -1,70 +1,113 @@
 
         body {
             
-				padding: 15px;
+				
 				background-image: url(../images/bike.jpg);
 				background-repeat:no-repeat;
 				background-size: cover;
 				background-attachment:fixed;
+			
     
         }
 
         html,
         body,
-        #map {
-            height: 100vh;
-            width: 100vw;
-        }
+		
+		*{font-family:Helvetica, sans-serif; 
+		}
+		
+      
 
         #map {
             height: 600px;
             width: 1024px;
+			margin: 0 auto 0 auto;
         }
 		
-		
+		#header {
+			font: 2em 'Lobster Two';
+			background-color:white;
+			width: 100%;
+			line-height: 1.7em;
+			 
+			vertical-align: middle;
+			text-align:center;
+			
+			
+		}
 		
 		
 		#etappentitel {
 			color: black;
-			font: 2.5em 'Lobster Two', Helvetica, sans-serif;
-			text-align: center;
+			font: 2.5em 'Lobster Two';
 			border: 1px solid white;
 			height: 80px;
 			padding-top: 50px;
 			padding-bottom: 50px;
+			text-align: center;
+		}
+		
+		#header1 {
+			font: 5em;
+		}
+			
+		#etappen {
+			float: left;
+			margin-left: 9%;
+
+		}
    
 			
 			
-		}
+		
 		#kurzinfo {
 			color: black;
-			font: 1em 'Lobster Two', Helvetica, sans-serif;
-			text-align:left-side;
+			font: 1em; 
 			background: rgba(162,181,205, 0.7);
-			
-		}
-		
-		h4 { color: white;
-			font: 1.5em 'Lobster Two', Helvetica, sans-serif;
-			text-align:left-side;
+			text-align: justify; 
+			padding: 15px;
+			margin: 20px;
 			
 			
 		}
 		
-		div {color: black;
-			font: 1em 'Lobster Two', Helvetica, sans-serif;
-		}
 		
-		#details {
+		
+
+		
+		.details {
 			color: black;
-			font: 1em 'Lobster Two', Helvetica, sans-serif;
-			text-align:left-side;
+			font: 1em; 
 			background: rgba(162,181,205, 0.7);
 			width: 220px;
+			display: inline-block;
+			float: center;
+
+		}
+	
+		
+		#wetter{
+			display: inline-block;
+			margin: 
 			
 		}
 		
+		
+		
+		.knopf {
+			border: 1px solid black;
+			border-radius:12%;
+			background-color: lightgrey;
+			display: inline-block;
+			padding:0.5em;
+			color: black;
+		}
+		
+		h4 {
+		color:black;
+		}
+			
+		
 		a {
-			font: 1em 'Lobster Two', Helvetica, sans-serif;
-			color: white;
+		text-decoration: none; color: black; font: 1em, Helvetica, sans-serif; text-align: left-side;
 		}
