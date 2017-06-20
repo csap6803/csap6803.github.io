@@ -81,6 +81,27 @@ window.onload = function() {
                 txt = "Nagut, dann viel Spaß in der Offline-Welt :(";
                 alert(txt);
             };*/
-     
+			
+		$(document).ready(function(){
+		var back = $('body');
+
+		var backgrounds = new Array(
+		'url(images/background.jpg)',
+		  'url(images/background2.jpg)',
+		  'url(images/background3.jpg)'
+		);
+
+		var current = 0;
+
+		function nextBackground() {
+			current++;
+			current = current % backgrounds.length;
+			back.css('background-image', backgrounds[current]);
+		}
+		setInterval(nextBackground, 20000);
+
+		back.css('background-image', backgrounds[0]);
+		});
+				 
 
 }
