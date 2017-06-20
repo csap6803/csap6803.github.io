@@ -100,6 +100,7 @@ window.onload = function() {
 		}
 		setInterval(nextBackground, 10000);
 
+		
 		back.css('background-image', backgrounds[0]);
 		});
 				 
