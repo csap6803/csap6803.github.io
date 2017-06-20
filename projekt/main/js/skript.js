@@ -72,7 +72,7 @@ window.onload = function() {
         '<h4>Bike-Track Tirol</h4><a target="_blank" href=../trail/index.html>Seite</a>').addTo(map);       
         
         
-        /*var txt;
+        var txt;
         var r = confirm("Willst du unsere Webseite auschecken?");
             if (r == true) {
                 txt = "Yeah! Viel Spaß!";
@@ -80,7 +80,7 @@ window.onload = function() {
             } else {
                 txt = "Nagut, dann viel Spaß in der Offline-Welt :(";
                 alert(txt);
-            };*/
+            };
 			
 			var back = $('body');
 
