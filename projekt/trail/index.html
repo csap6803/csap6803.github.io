@@ -21,7 +21,8 @@
 </head>
 
 <body>
-    <h3> Bike Trail Tirol </h3>
+	<h3 id="header"></h3>
+    <h3 id= Bike Trail Tirol> </h3>
     
 	<h2 id="etappentitel"></h2>
 	<h4>Tourenbeschreibung: </h4>
@@ -44,12 +45,13 @@
 	
 	<h4> Streckendetails: </h4>
 	
+	<div id = "details">
 	<div id="bergauf" ></div>
 	<div id="bergab" ></div>
 	<div id="dauer" ></div>
 	<div id="laenge" ></div>
 	<div id="level" ></div>
-
+	</div>
 
     <script>
         // WMTS-Layer basemap.at - Quelle: http://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml
@@ -289,37 +291,7 @@ function loadTrack(track) {
             });
         });
 		}
-        var start = L.marker([47.35476, 11.47711], {
-            title: 'Start',
-            icon: L.icon({
-                iconUrl: 'icons/hiking.png',
-                iconAnchor: [14, 34]
-            })
-        }).addTo(map);
-
-        var ziel = L.marker([47.27093, 11.39542], {
-            title: 'Ziel',
-            icon: L.icon({
-                iconUrl: 'icons/finish.png',
-                iconAnchor: [14, 34]
-            })
-        }).addTo(map);
-
-        var adlerblickSeegrube = L.marker([47.3062, 11.3799], {
-            title: 'Seegrube Adlerblick',
-            icon: L.icon({
-                iconUrl: 'icons/panoramicview.png',
-                iconAnchor: [14, 34]
-            })
-        }).addTo(map);
-
-        var adlerblickSeegrube = L.marker([47.31185, 11.38376], {
-            title: 'Hafelekar Adlerblick',
-            icon: L.icon({
-                iconUrl: 'icons/panoramicview.png',
-                iconAnchor: [14, 34]
-            })
-        }).addTo(map);
+      
 
 
 

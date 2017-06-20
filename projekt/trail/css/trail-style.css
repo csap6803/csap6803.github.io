@@ -20,3 +20,51 @@
             height: 600px;
             width: 1024px;
         }
+		
+		
+		
+		
+		#etappentitel {
+			color: black;
+			font: 2.5em 'Lobster Two', Helvetica, sans-serif;
+			text-align: center;
+			border: 1px solid white;
+			height: 80px;
+			padding-top: 50px;
+			padding-bottom: 50px;
+   
+			
+			
+		}
+		#kurzinfo {
+			color: black;
+			font: 1em 'Lobster Two', Helvetica, sans-serif;
+			text-align:left-side;
+			background: rgba(162,181,205, 0.7);
+			
+		}
+		
+		h4 { color: white;
+			font: 1.5em 'Lobster Two', Helvetica, sans-serif;
+			text-align:left-side;
+			
+			
+		}
+		
+		div {color: black;
+			font: 1em 'Lobster Two', Helvetica, sans-serif;
+		}
+		
+		#details {
+			color: black;
+			font: 1em 'Lobster Two', Helvetica, sans-serif;
+			text-align:left-side;
+			background: rgba(162,181,205, 0.7);
+			width: 220px;
+			
+		}
+		
+		a {
+			font: 1em 'Lobster Two', Helvetica, sans-serif;
+			color: white;
+		}
