@@ -85,9 +85,9 @@ window.onload = function() {
 			var back = $('body');
 
 			var backgrounds = new Array(
-				'url(../images/background.jpg)'
-			  , 'url(../images/background.jpg)'
-			  , 'url(../images/background.jpg)'
+				'url(images/background.jpg)'
+			  , 'url(images/background2.jpg)'
+			  , 'url(images/background3.jpg)'
 			);
 
 			var current = 0;
