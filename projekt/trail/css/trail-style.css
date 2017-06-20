@@ -6,25 +6,13 @@
 				background-repeat:no-repeat;
 				background-size: cover;
 				background-attachment:fixed;
-			
+				font-family:Helvetica, sans-serif; 
     
         }
 
-        html,
-        body,
+        
 		
-		*{font-family:Helvetica, sans-serif; 
-		}
-		
-      
-
-        #map {
-            height: 600px;
-            width: 1024px;
-			margin: 0 auto 0 auto;
-        }
-		
-		#header {
+  		#header {
 			font: 2em 'Lobster Two';
 			background-color:white;
 			width: 100%;
@@ -36,10 +24,15 @@
 			
 		}
 		
-		a {
-		text-decoration: none; color: black; font: 1em, Helvetica, sans-serif; text-align: left-side;
-		}
+  
+
+        #map {
+            height: 600px;
+            width: 1024px;
+			margin: 0 auto 0 auto;
+        }
 		
+
 		
 		#etappentitel {
 			color: black;
@@ -50,17 +43,15 @@
 			padding-bottom: 50px;
 			text-align: center;
 		}
-		
-		#header1 {
-			font: 5em;
-		}
-			
+					
 		#etappen {
 			float: left;
 			margin-left: 9%;
 
 		}
    
+
+
 			
 			
 		
@@ -83,16 +74,17 @@
 			color: black;
 			font: 1em; 
 			background: rgba(162,181,205, 0.7);
-			position: absolute;
-			margin: 0 0 0 -150px;
-			left: 50%;
+			float: center;
+			text-align: center; 
+			margin: 0 40% 0 40%;
+			
 		}
 	
 		
-		#wetter{
-			display: inline-block;
-			float: center;
-			
+		table{
+			text-align: center;
+			float: right;
+			width: 100%;
 		}
 		
 		
@@ -106,8 +98,20 @@
 			color: black;
 		}
 		
-		h4 {
-		color:black;
+		h3 { color: white;
+			font: 1.5em; 
 		}
-			
 		
+		h4 { color: white;
+			font: 1.5em; 
+			}
+			
+
+		a {
+		text-decoration: none; 
+		color: black; 
+		font: 1em, Helvetica, sans-serif; 
+		text-align: center; 
+		background-color: rgba(255,255,255, 0.7);
+		}
+		  

@@ -235,14 +235,7 @@ function loadTrack(track) {
 
 
 
-        map.on("zoomend", function() {
-            if (map.getZoom() >= 15) {
-                map.addLayer(einkehrLayer);
-            } else {
-                map.removeLayer(einkehrLayer);
-            }
 
-        });
 
         einkehrLayer.addTo(map);
 		
