@@ -17,7 +17,6 @@
 			background-color:white;
 			width: 100%;
 			line-height: 1.7em;
-			 
 			vertical-align: middle;
 			text-align:center;
 			
@@ -57,7 +56,7 @@
 		
 		#kurzinfo {
 			color: black;
-			font: 1em; 
+			font: 1em;
 			background: rgba(162,181,205, 0.7);
 			text-align: justify; 
 			padding: 15px;
@@ -81,11 +80,7 @@
 		}
 	
 		
-		table{
-			text-align: center;
-			float: right;
-			width: 100%;
-		}
+		
 		
 		
 		
@@ -99,18 +94,18 @@
 		}
 		
 		h3 { color: white;
-			font: 1.5em; 
+			font: 1.5em;
 		}
 		
 		h4 { color: white;
-			font: 1.5em; 
+			font: 1.5em;
 			}
 			
 
 		a {
 		text-decoration: none; 
 		color: black; 
-		font: 1em, Helvetica, sans-serif; 
+		font: 1em;
 		text-align: center; 
 		background-color: rgba(255,255,255, 0.7);
 		}
