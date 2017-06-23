@@ -57,7 +57,7 @@ window.onload = function() {
         var hash = new L.Hash(map);
         
         var hike = L.icon({
-			iconUrl: 'images/hiking.png',
+			iconUrl: 'main/images/hiking.png',
 			iconAnchor: [16, 37]
 		});
 		L.marker([47.35663, 12.27387], { title: "Wander-Etappe", icon: hike}).bindPopup(
@@ -65,7 +65,7 @@ window.onload = function() {
         
         
         var bike = L.icon({
-			iconUrl: 'images/bike_rising.png',
+			iconUrl: 'main/images/bike_rising.png',
 			iconAnchor: [16, 37],
 		});
 		L.marker([47.364963, 11.159393], { title: "Rad-Etappe", icon: bike}).bindPopup(
