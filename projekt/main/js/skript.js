@@ -30,16 +30,16 @@ window.onload = function() {
         }).addTo(map);
 
         //Bike Track einfügen
-        var gpxbike = omnivore.gpx('data/gpxbike/bike.gpx').addTo(map);      
+        var gpxbike = omnivore.gpx('main/data/gpxbike/bike.gpx').addTo(map);      
         //Wanderweg als eine Etappe einfügen  
-        var gpxtrack = omnivore.gpx('data/gps-daten-kat-walk-alpin.gpx').addTo(map);
+        var gpxtrack = omnivore.gpx('main/data/gps-daten-kat-walk-alpin.gpx').addTo(map);
         
         //Popup mit Link zur Seite
         
         gpxbike.bindPopup(
-        '<h4>Bike-Track Tirol</h4><a target="_blank" href=../trail/index.html>Seite</a>');
+        '<h4>Bike-Track Tirol</h4><a target="_blank" href=trail/index.html>Seite</a>');
         gpxtrack.bindPopup(
-        '<h4>Wanderweg KAT</h4><a target="_blank" href=../kat/index.html>Seite</a>');
+        '<h4>Wanderweg KAT</h4><a target="_blank" href=kat/index.html>Seite</a>');
        
         
         var layerControl = L.control.layers({
@@ -61,7 +61,7 @@ window.onload = function() {
 			iconAnchor: [16, 37]
 		});
 		L.marker([47.35663, 12.27387], { title: "Wander-Etappe", icon: hike}).bindPopup(
-        '<h4>Wanderweg KAT</h4><a target="_blank" href=../kat/index.html>Seite</a>').addTo(map);
+        '<h4>Wanderweg KAT</h4><a target="_blank" href=kat/index.html>Seite</a>').addTo(map);
         
         
         var bike = L.icon({
@@ -69,7 +69,7 @@ window.onload = function() {
 			iconAnchor: [16, 37],
 		});
 		L.marker([47.364963, 11.159393], { title: "Rad-Etappe", icon: bike}).bindPopup(
-        '<h4>Bike-Track Tirol</h4><a target="_blank" href=../trail/index.html>Seite</a>').addTo(map);       
+        '<h4>Bike-Track Tirol</h4><a target="_blank" href=trail/index.html>Seite</a>').addTo(map);       
         
         
         var txt;
@@ -85,9 +85,9 @@ window.onload = function() {
 			var back = $('body');
 
 			var backgrounds = new Array(
-				'url(images/background.jpg)'
-			  , 'url(images/background2.jpg)'
-			  , 'url(images/background3.jpg)'
+				'url(main/images/background.jpg)'
+			  , 'url(main/images/background2.jpg)'
+			  , 'url(main/images/background3.jpg)'
 			);
 
 			var current = 0;
